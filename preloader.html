@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root{
+    --size: 120;
+    --speed: 0.65;
+}
+
+.loader{
+    height: 120px;
+    width: 120px;
+    margin: 30px auto 0;
+    position: relative;
+}
+
+.loader > div{
+    height: calc(var(--size) * 1px);
+    width: calc(var(--size) * 1px);
+    border-radius: 100%;
+    border: calc(var(--size) / 4 * 1px) solid rgba(0,0,0,0.05);
+    transform: translate(calc(var(--translate) * 1%), 0) translate(calc(var(--translate-2) * 1px), 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: infinity-spin linear infinite;
+    animation-duration: calc(var(--speed) * 1s);
+}
+
+.loader > div:nth-of-type(1){
+    --translate: -50;
+    --translate-2: calc(var(--size) / 8);
+}
+
+.loader > div:nth-of-type(2){
+    --translate: 50;
+    --translate-2: calc(var(--size) / 8 * -1);
+    animation-delay: calc(var(--speed) * 1s);
+    animation-direction: reverse;
+}
+
+.loader > div:before{
+    content: '';
+    background: linear-gradient(to right,#8E2DE2,#4A00E0);
+    height: calc(var(--size) / 4 * 1px);
+    width: calc(var(--size) / 4 * 1px);
+    border-radius: 100%;
+    position: absolute;
+    top: 50%;
+    animation: infinity-vanish calc(var(--speed) * 2s) infinite reverse steps(1);
+    transform: translate(calc(var(--translate-2) * 2px), calc(var(--translate) * 1%));
+}
+
+.loader > div:nth-of-type(1):before{ right: 0; }
+
+.loader > div:nth-of-type(2):before{
+    transform: translate(calc(var(--size) / 4 * -1px), -50%);
+    left: 0;
+    animation-direction: normal;
+}
+
+@keyframes infinity-spin{
+    0%{
+        transform: translate(calc(var(--translate) * 1%), 0) translate(calc(var(--translate-2) * 1px), 0) rotate(0deg);
+    }
+    100%{
+        transform: translate(calc(var(--translate) * 1%), 0) translate(calc(var(--translate-2) * 1px), 0) rotate(360deg);
+    }
+}
+
+@keyframes infinity-vanish{
+    0%{ opacity: 0; }
+    50%{ opacity: 1; }
+}
+    </style>
+</head>
+
+<body>
+
+            <div class="row text-center">
+                <h1 class="white">hello</h1>
+            </div>
+
+            <div class="loader">
+                <div></div>
+                <div></div>
+            </div>
+
+
+</body>
+
+</html>

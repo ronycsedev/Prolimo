@@ -1,0 +1,163 @@
+:root{
+	--size: 120;
+	--speed: 0.65;
+  }
+  .loader-wrap{ position: absolute; left: 50%; top: 50%; transform:translate(-50%, -50%) ; -webkit-transform:translate(-50%, -50%) ; -moz-transform:translate(-50%, -50%) ; -ms-transform:translate(-50%, -50%) ; -o-transform:translate(-50%, -50%) ; width: 100%; height: 100%; z-index: 999999; background-color: rgb(255, 255, 255);}
+  
+  .loader{
+	height: 120px;
+	width: 120px;
+	margin: 30px auto 0;
+	position: absolute;
+	left: 50%; top: 45%; transform:translate(-50%, -50%) ;
+  }
+  
+  .loader > div{
+	height: calc(var(--size) * 1px);
+	width: calc(var(--size) * 1px);
+	border-radius: 100%;
+	border: calc(var(--size) / 4 * 1px) solid rgba(0,0,0,0.05);
+	transform: translate(calc(var(--translate) * 1%), 0) translate(calc(var(--translate-2) * 1px), 0);
+	position: absolute;
+	top: 0;
+	left: 0;
+	animation: infinity-spin linear infinite;
+	animation-duration: calc(var(--speed) * 1s);
+  }
+  
+  .loader > div:nth-of-type(1){
+	--translate: -50;
+	--translate-2: calc(var(--size) / 8);
+  }
+  
+  .loader > div:nth-of-type(2){
+	--translate: 50;
+	--translate-2: calc(var(--size) / 8 * -1);
+	animation-delay: calc(var(--speed) * 1s);
+	animation-direction: reverse;
+  }
+  
+  .loader > div:before{
+	content: '';
+	background: linear-gradient(to right,#8E2DE2,#4A00E0);
+	height: calc(var(--size) / 4 * 1px);
+	width: calc(var(--size) / 4 * 1px);
+	border-radius: 100%;
+	position: absolute;
+	top: 50%;
+	animation: infinity-vanish calc(var(--speed) * 2s) infinite reverse steps(1);
+	transform: translate(calc(var(--translate-2) * 2px), calc(var(--translate) * 1%));
+  }
+  
+  .loader > div:nth-of-type(1):before{ right: 0; }
+  
+  .loader > div:nth-of-type(2):before{
+	transform: translate(calc(var(--size) / 4 * -1px), -50%);
+	left: 0;
+	animation-direction: normal;
+  }
+  
+  @keyframes infinity-spin{
+	0%{
+		transform: translate(calc(var(--translate) * 1%), 0) translate(calc(var(--translate-2) * 1px), 0) rotate(0deg);
+	}
+	100%{
+		transform: translate(calc(var(--translate) * 1%), 0) translate(calc(var(--translate-2) * 1px), 0) rotate(360deg);
+	}
+  }
+  
+  @keyframes infinity-vanish{
+	0%{ opacity: 0; }
+	50%{ opacity: 1; }
+  }
+  .white{color: transparent;}
+
+/* button */
+.main-btn {
+	display: inline-block;
+	vertical-align: middle;
+	border: 1px solid #ffffff;
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px transparent;
+	position: relative;
+	-webkit-transition-property: color;
+	transition-property: color;
+	-webkit-transition-duration: .3s;
+	transition-duration: .3s;
+	border-radius: 3px;
+	color: #fff;
+	font-weight: 600;
+	padding: 10px 30px;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+.main-btn:hover{
+	color: #ffffff;
+}
+.main-btn:active:before, 
+.main-btn:focus:before, 
+.main-btn:hover:before {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+.main-btn:before {
+	content: "";
+	position: absolute;
+	background-color: #333;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: 3px;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+	-webkit-transition-property: transform;
+	-webkit-transition-property: -webkit-transform;
+	transition-property: -webkit-transform;
+	transition-property: transform;
+	transition-property: transform, -webkit-transform;
+	-webkit-transition-duration: .3s;
+	transition-duration: .3s;
+	-webkit-transition-timing-function: ease-out;
+	transition-timing-function: ease-out;
+}
+.white-btn.main-btn {
+	background-color: #ffffff !important;
+}
+.white-btn.main-btn:hover{
+	color: #ffffff;
+}
+
+/* carousel dots */
+.owl-carousel {
+	margin-bottom: 50px;
+}
+.testimonial-section .owl-dots {
+	bottom: 0px;
+}
+.best-client-list.owl-carousel{
+	margin-bottom: 0px;
+}
+.owl-dots {
+	bottom: -50px;
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-align: center;
+}
+.owl-dot {
+	border-radius: 3px;
+	display: inline-block;
+	height: 8px;
+	margin: 0 5px;
+	-webkit-transition: all 0.2s linear 0s;
+	transition: all 0.2s linear 0s;
+	width: 15px;
+}
+.owl-dot.active, .owl-dot:hover {
+	width: 25px;
+}
+
+
